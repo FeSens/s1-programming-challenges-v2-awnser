@@ -20,4 +20,12 @@ var counter=0;
         //console.log(books);
         counter = counter+1;
     });
+
+    $("#books").on("click", ".remove", function() {
+        id = $(this).parent().attr('id');
+        $( "#"+id ).remove();
+        //delete books[id];
+        //console.log(books);
+    });
+    
 });
