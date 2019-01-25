@@ -48,9 +48,17 @@ var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
             lista.push(book);
         });
 
-        settings= [{"propriedade": "autor", "ordem": 1},
-        {"propriedade": "edicao", "ordem": 1},
-        {"propriedade": "titulo", "ordem": 1}];
+        settings = [];
+        $("#settings li").each(function() {
+            var p = $(this).find(".ordem").attr("prop"); 
+            //if off push last ORDEM 1
+            if ($(this).find(".ordem").attr("prop") == 2){
+                var filtro = "";
+            } else{
+                var filtro = $(this).attr("prop");
+            };
+            settings.push({"propriedade": filtro, "ordem": Math.pow(-1,p)});
+        });
         lista = ordenar(lista,settings);
         console.log(lista);
 
