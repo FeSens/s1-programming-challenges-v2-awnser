@@ -1,13 +1,13 @@
 # Arquitetura 
 Este documento tem o objetivo de justificar e explicar as escolhas tomadas neste projeto.
 
-Varias duvidas surgiram quando a proposta do desafio foi lida: Fazer uma interface web? O que exatamente eu devo retornar para o usuario? Os livros ordenados ou os indices ordenados? Servico de ordenacao e Cliente do servico de ordenacao querem dizer back e frontend ou apenas o programa e o usuario do programa? As configuracoes de ordenacao devem ser somente acessiveis atraves de um arquivo?
-Para sanar estas duvidas foi escolhida uma direcao. Este programa nao e direcionado a equipe do processo seletivo da SumOne ou para quem estiver avaliando o codigo, este programa e direcionado ao usuario. Este projeto foi pensado em satifazer as necessidades de uma bliblioteca que precisa ordenar os seus livros.
-Dito isto, gostaria de explicar o parametro `{'lock': false}` disponivel no arquivo de configuracao settings.json. Esta configuracao serve para consistencia na ordenacao dos livros. Caso assim deseje, o responsavel pela organizacao da bliblioteca pode travar as configuracoes, grantindo que qualquer funcionario sem conhecimento ou treinamento previo possa organizar a bliblioteca de maneira coerente aos seus antecessores. Porem caso nao deseje, as configuracoes podem ser facilmente ajustadas na interface grafica.
+Várias dúvidas surgiram quando a proposta do desafio foi lida: Fazer uma interface web? O que exatamente eu devo retornar para o usuário? Os livros ordenados ou os índices ordenados? Serviço de ordenação e Cliente do serviço de ordenação querem dizer back e frontend ou apenas o programa e o usuário do programa? As configurações de ordenação devem ser somente acessíveis através de um arquivo?
+Para sanar estas duvidas foi escolhida uma direção. Este programa não e direcionado a equipe do processo seletivo da SumOne ou para quem estiver avaliando o código, este programa e direcionado ao usuário. Este projeto foi pensado em satisfazer as necessidades de uma biblioteca que precisa ordenar os seus livros.
+Dito isto, gostaria de explicar o parâmetro `{'lock': false}` disponível no arquivo de configuração settings.json. Esta configuração serve para consistência na ordenação dos livros. Caso assim deseje, o responsável pela organização da biblioteca pode travar as configurações, garantindo que qualquer funcionário sem conhecimento ou treinamento prévio possa organizar a biblioteca de maneira coerente aos seus antecessores. Porem caso não deseje, as configurações podem ser facilmente ajustadas na interface gráfica.
 Foi com esta mentalidade que este programa foi desenvolvido.
 
 ## Framework
-Foi escolhido para a execucao do projeto o framework [Electron](https://electronjs.org/), que permite desenvolver um app desktop utilizando ferramentas web como JavaScript e HTML. Isto e] torna o codigo portatil, podendo ser executado em diversos sistemas operacionais ou ser facilmente portado para uma aplicacao web.
+Foi escolhido para a execução do projeto o framework [Electron](https://electronjs.org/), que permite desenvolver um app desktop utilizando ferramentas web como Java Script e HTML. Isto e] torna o código portátil, podendo ser executado em diversos sistemas operacionais ou ser facilmente portado para uma aplicação web.
 
 ## Arquivos
 
@@ -23,33 +23,33 @@ Foi escolhido para a execucao do projeto o framework [Electron](https://electron
 
 
 ### Main.js
-Neste arquivo encontramos o inicio do co'digo. Em suas primeiras linhas temos a funcoes para criar a janela do programa e criar ou carregar, caso ja exista, o arquivo de configura'ao [settings.js](#Settingsjs). 
-Em suas ultimas linhas temos tr'es func'oes de IPC (inter process communication) para transmitir dados entre a UI (janela principal) e o backend. Estas funcoes realizam tres operacoes: 
+Neste arquivo encontramos o início do código. Em suas primeiras linhas temos a funções para criar a janela do programa e criar ou carregar, caso já exista, o arquivo de configura ‘ao [settings.js](#Settingsjs). 
+Em suas últimas linhas temos três funções de IPC (inter process communication) para transmitir dados entre a UI (janela principal) e o backend. Estas funções realizam três operações: 
 
-1.  Comunicam com a interface se o arquivo de configuracao permite alteracao ou nao.
-2.  Salvam as preferencias de ordenacao setadas pela interface no arquivo de configuracao.
-3.  Comunicam com a interface, quando o programa e iniciado, as preferencias setadas no arquivo de configuracao.
+1.  Comunicam com a interface se o arquivo de configuração permite alteração ou não.
+2.  Salvam as preferências de ordenação septadas pela interface no arquivo de configuração.
+3.  Comunicam com a interface, quando o programa e iniciado, as preferencias septadas no arquivo de configuração.
 
 ### Main.html
-Esta e a interface do programa com o cliente, nela e definido o esqueleto que sera dinamicamente modificado pelo arquivo [window.js](#Windowjs)
+Esta e a interface do programa com o cliente, nela e definido o esqueleto que será dinamicamente modificado pelo arquivo [window.js](#Windowjs)
 
 ### Window.js
-Este e o principal arquivo do programa, ele comanda toda a interface grafica, dando vida ao projeto.
-Primeiro o programa recebe do backend duas informacoes cruciais, se as configuracoes estao travadas e quais sao estas configuracoes. Entao ele prossegue para atualizar as configuracoes de ordenacao na interface, caso estas nao possam ser modificadas pelo usuario (estejam travadas) o programa omitira a secessão necessaria para fazer quaisquer alteracoes.
-A ordenacao dos livros ocorre atraves de um click no botao ORDENAR, isto desencadeia a execucao de uma funcao jQuery que realiza os seguintes passos:
+Este e o principal arquivo do programa, ele comanda toda a interface grafia, dando vida ao projeto.
+Primeiro o programa recebe do backend duas informações cruciais, se as configurações estão travadas e quais são estas configurações. Então ele prossegue para atualizar as configurações de ordenação na interface, caso estas não possam ser modificadas pelo usuário (estejam travadas) o programa omitira a secessão necessária para fazer quaisquer alterações.
+A ordenação dos livros ocorre através de um click no botão ORDENAR, isto desencadeia a execução de uma função jQuery que realiza os seguintes passos:
 
-1.  Busca na interface do usuario(HTML) todos os livros inpudados pelo usuario e os coloca em uma lista.
-2.  Chama a funcao getSettings, que busca no HTML todas as configuracoes setadas pelo usuario.
-3.  Chama a funcao ordenar, definida em [ordenador.js](#Ordenadorjs), para ordenar a lista de livros.
-4.  Atualiza a interface do usuario para mostrar a lista ordenada.
+1.  Busca na interface do usuário(HTML) todos os livros imputados pelo usuário e os coloca em uma lista.
+2.  Chama a função getSettings, que busca no HTML todas as configurações setadas pelo usuário.
+3.  Chama a função ordenar, definida em [ordenador.js](#Ordenadorjs), para ordenar a lista de livros.
+4.  Atualiza a interface do usuário para mostrar a lista ordenada.
 
-Varias outras funcoes tambem estao contidas neste arquivo, elas sao necessarias para realizar funcoes como: adicionar novos livros, remover livros previamente adcionados e mudar a prioridade/direcao dos filtros.
+Várias outras funções também estão contidas neste arquivo, elas são necessárias para realizar funções como: adicionar novos livros, remover livros previamente adicionados e mudar a prioridade/direção dos filtros.
 
 ### Ordenador.js
-Nesta parte do programa e definida a funcao `ordenar()`, ela e responsavel por receber a lista de livros, suas preferencias de ordenacao e retornar a lista ordenada. Ela toma vantagem de uma bliblioteca chamada *thenBy* que serve a somente um proposito, organizar arrays em javascript por um ou mais atributos. Esta bliblioteca se mostrou perfeita para a ocasiao pois, alem de possibilitar a ordenacao dos livros, ela pode ignorar atributos nao existentes no array. Isto torna possivel desativar a ordenacao de qualquer um dos atributos com a utilizacao de um simples prefixo, neste caso "off-, ao invez de qualquer outra logica mais complicada.
+Nesta parte do programa e definida a função `ordenar()`, ela e responsável por receber a lista de livros, suas preferências de ordenação e retornar a lista ordenada. Ela toma vantagem de uma biblioteca chamada *thenBy* que serve a somente um proposito, organizar arrays em javascript por um ou mais atributos. Esta biblioteca se mostrou perfeita para a ocasião pois, além de possibilitar a ordenação dos livros, ela pode ignorar atributos não existentes no arras. Isto torna possível desativar a ordenação de qualquer um dos atributos com a utilização de um simples prefixo, neste caso "off-, ao invés de qualquer outra logica mais complicada.
 
 ### Settings.json
-Aqui sao definidas as configuracoes para a ordenacao dos livros, elas podem ser setadas manualmente ou atraves da iterface grafica pelo botao "Salvar Config".
+Aqui são definidas as configurações para a ordenação dos livros, elas podem ser setadas manualmente ou através da interface gráfica pelo botão "Salvar Config".
 Neste arquivo encontramos o seguinte array:
 ```
 [{"ordem":1,"propriedade":"titulo"},
@@ -57,4 +57,4 @@ Neste arquivo encontramos o seguinte array:
  {"ordem":1,"propriedade":"edicao"},
  {"lock":"false"}]
 ```
-Onde a ordem indica a direcao (1: Ascendente, -1 Descendente), a propriedade define qual o parametro que ira ser ordenado (podendo ser desconsiderado atraves do prefixo "off-" ex:"off-titulo"), a sequencia determina qual sera a prioridade de ordenacao e por ultimo o paramentro lock que indica se modificacoes nesse arquivo sao permitidas pelo usuario ou nao.
+Onde a ordem indica a direção (1: Ascendente, -1 Descendente), a propriedade define qual o parâmetro que irá ser ordenado (podendo ser desconsiderado através do prefixo "off-" ex:"off-título"), a sequência determina qual será a prioridade de ordenação e por último o parâmetro lock que indica se modificações nesse arquivo são permitidas pelo usuário ou não.
