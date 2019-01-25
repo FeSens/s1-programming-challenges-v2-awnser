@@ -30,8 +30,8 @@ if (fs.existsSync(file)) {
         {"propriedade":"titulo","ordem":1},
         {"propriedade":"autor","ordem":1},
         {"propriedade":"edicao","ordem":1},
-        {"lock": false},
     ];
+    lock = false
     fs.writeFile (file, JSON.stringify(settings), function(err) {
     if (err) throw err;
     console.log('complete');
@@ -52,4 +52,9 @@ ipcMain.on('salvar', (event, arg) => {
         if (err) throw err;
         console.log('Configs Salvas com sucesso!');
         });
+});
+
+ipcMain.on("settings", (event, arg) => {
+    console.log(arg)
+    event.returnValue = settings;
 });
