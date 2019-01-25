@@ -42,7 +42,8 @@ console.log(settings);
 app.on('ready', createWindow);
 
 ipcMain.on("is-locked", (event, arg) => {
-    event.returnValue = lock;
+    console.log(arg)
+    event.returnValue = lock["lock"];
 });
 
 ipcMain.on('salvar', (event, arg) => {
