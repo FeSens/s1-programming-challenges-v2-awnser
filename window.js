@@ -5,6 +5,7 @@ var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
 var lock = ipcRenderer.sendSync('is-locked', 'ping');
 var settings = ipcRenderer.sendSync('settings', 'ping');
 console.log(settings)
+
 //Carrega as configs do arquivo
 $("#settings ul").empty();
 for (i = 0; i < 3; i++){
@@ -23,7 +24,7 @@ if (lock == "true"){
     $("#salvar").hide();
 };
 
-
+//Busca as configuracoes de ordenacao 
 function getSettings(){
     settings = [];
     $("#settings li").each(function() {
@@ -61,9 +62,6 @@ function getSettings(){
     });
 
     $("#ordenar").click(function () { 
-        //Grab the data from de <li> put in an array, order it, rewrite it to the screen..
-        //Create a way to select the propertys of the ordering system
-        //Save and load that from a file
         lista = [];
         $("#books_list li").each(function() {
             autor = $(this).find("input.autor").val();
@@ -99,7 +97,7 @@ function getSettings(){
     });
 
     //Cicla entre Ascendente descentende e Off
-    //bloquear os 3 em off
+    //Nao permite que os 3 fiquem em off
     $('.ordem').on('click', function() {
         var i = $(this).attr("prop");
         i++;
