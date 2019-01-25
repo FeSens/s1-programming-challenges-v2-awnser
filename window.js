@@ -7,16 +7,16 @@ var counter=0;
         $( "#in .autor" ).val("");
         var titulo = $( "#in .titulo" ).val();
         $( "#in .titulo" ).val("");
-        var ano = $( "#in .ano" ).val();
-        $( "#in .ano" ).val("");
+        var edicao = $( "#in .edicao" ).val();
+        $( "#in .edicao" ).val("");
         
 
         $('#books_list').append(
-            `<li id=${counter}><input type="text" class="autor" value="${autor}"> <input type="text" class="titulo" value="${titulo}"> <input type="text" class="ano" value="${ano}"> <button class=remove>-</button></li>`
+            `<li id=${counter}><input type="text" class="autor" value="${autor}"> <input type="text" class="titulo" value="${titulo}"> <input type="text" class="edicao" value="${edicao}"> <button class=remove>-</button></li>`
         );
         //console.log(`${autor}`);
     
-        //books[counter] = {"autor": autor, "titulo": titulo, "ano": ano}
+        //books[counter] = {"autor": autor, "titulo": titulo, "edicao": edicao}
         //console.log(books);
         counter = counter+1;
     });
