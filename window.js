@@ -1,6 +1,5 @@
 $(() => {
 const { ipcRenderer } = require('electron')
-var counter=0;
 var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
 
 var lock = ipcRenderer.sendSync('is-locked', 'ping');
@@ -40,6 +39,7 @@ function getSettings(){
     return settings
 }
 
+    var counter=0;
     $("#add").click(function () {  
         var autor = $( "#in .autor" ).val();
         $( "#in .autor" ).val("");
