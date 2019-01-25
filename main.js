@@ -21,16 +21,16 @@ function createWindow() {
     })
 }
 
-
-
 const file = 'settings.json'
 if (fs.existsSync(file)) {
     var settings = JSON.parse(fs.readFileSync(file, 'utf8'));
+    var lock = settings.pop()
 } else {
     var settings = [
         {"propriedade":"titulo","ordem":1},
         {"propriedade":"autor","ordem":1},
         {"propriedade":"edicao","ordem":1},
+        {"lock": false},
     ];
     fs.writeFile (file, JSON.stringify(settings), function(err) {
     if (err) throw err;
@@ -39,6 +39,11 @@ if (fs.existsSync(file)) {
 };
 
 console.log(settings);
+app.on('ready', createWindow);
+
+ipcMain.on("is-locked", (event, arg) => {
+    event.returnValue = lock;
+});
 
 ipcMain.on('salvar', (event, arg) => {
     console.log(arg)
@@ -46,8 +51,4 @@ ipcMain.on('salvar', (event, arg) => {
         if (err) throw err;
         console.log('Configs Salvas com sucesso!');
         });
-    //event.sender.send('asynchronous-reply', 'pong')
-  })
-
-
-app.on('ready', createWindow);
+});
