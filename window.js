@@ -41,25 +41,25 @@ var firstBy = require('thenby');
         $("#books_list li").each(function() {
             autor = $(this).find("input.autor").val();
             titulo = $(this).find("input.titulo").val();
-            ano = $(this).find("input.ano").val();
+            edicao = $(this).find("input.edicao").val();
 
-            book = {"autor":autor, "titulo": titulo, "ano": ano};
+            book = {"autor":autor, "titulo": titulo, "edicao": edicao};
             
             lista.push(book);
         });
 
-        
-        lista.sort(
-            firstBy("autor")
-        );
+        settings= [{"propriedade": "autor", "ordem": 1},
+        {"propriedade": "edicao", "ordem": 1},
+        {"propriedade": "titulo", "ordem": 1}];
+        lista = ordenar(lista,settings);
         console.log(lista);
 
         
         $('#books_list').empty();
         counter = 0;
-        $.each(lista, function( key, {autor, titulo, ano}) {
+        $.each(lista, function( key, {autor, titulo, edicao}) {
             $('#books_list').append(
-            `<li id=${counter}><input type="text" class="titulo" value="${titulo}"> <input type="text" class="autor" value="${autor}"> <input type="text" class="ano" value="${ano}"> <button class=remove>-</button></li>`
+            `<li id=${counter}><input type="text" class="titulo" value="${titulo}"> <input type="text" class="autor" value="${autor}"> <input type="text" class="edicao" value="${edicao}"> <button class=remove>-</button></li>`
             );
             counter = counter +1;
         });
