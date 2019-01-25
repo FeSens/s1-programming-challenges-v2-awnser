@@ -65,4 +65,15 @@ var firstBy = require('thenby');
         });
     });
 
+    //Logica para mudar a prioridade dos filtros
+    $('[id^="up_"]').on('click', function() {
+        var li = $(this).closest('li');
+        li.prev('li').before(li);
+    });
+
+    $('[id^="down_"]').on('click', function() {
+        var li = $(this).closest('li');
+        li.next('li').after(li);
+    });
+
 });
