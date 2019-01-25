@@ -89,7 +89,9 @@ function getSettings(){
     });
 
     $("#salvar").on("click", function() {
-        ipcRenderer.send('settings', getSettings()); // prints "pong"
+        arg = getSettings();
+        arg.push({"lock":"false"})
+        ipcRenderer.send('salvar', arg);
     });
 
 });
