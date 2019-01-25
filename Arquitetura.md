@@ -5,14 +5,14 @@ Este documento tem o objetivo de justificar e explicar as escolhas tomadas neste
 Foi escolhido para a execucao do projeto o framework [Electron](https://electronjs.org/), que permite desenvolver um app desktop utilizando ferramentas web como JavaScript e HTML. Isto e] torna o codigo portatil, podendo ser executado em diversos sistemas operacionais ou ser facilmente portado para uma aplicacao web.
 
 ## Arquivos
-[Main.js](#Main.js)
+[Main.js](###Main.js)
 [Main.html](#Main.html)
 [Window.js](#Window.js)
 [Ordenador.js](#Ordenador.js)
-[Settings.json](#Settings.json)
+[Settings.json](###Settings.json)
 
 
-(### Main.js)
+### Main.js
 Neste arquivo encontramos o inicio do co'digo. Em suas primeiras linhas temos a funcoes para criar a janela do programa e criar ou carregar, caso ja exista, o arquivo de configura'ao [settings.js](#Settings.js). 
 Em suas ultimas linhas temos tr'es func'oes de IPC (inter process communication) para transmitir dados entre a UI (janela principal) e o backend. Estas funcoes realizam tres operacoes: 
 
