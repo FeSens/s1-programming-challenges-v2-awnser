@@ -1,6 +1,22 @@
 $(() => {
+const { ipcRenderer } = require('electron')
 var counter=0;
 var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
+
+function getSettings(){
+    settings = [];
+    $("#settings li").each(function() {
+        var p = $(this).find(".ordem").attr("prop"); 
+        //if off push last ORDEM 1
+        if ($(this).find(".ordem").attr("prop") == 2){
+            var filtro = "";
+        } else{
+            var filtro = $(this).attr("prop");
+        };
+        settings.push({"propriedade": filtro, "ordem": Math.pow(-1,p)});
+    });
+    return settings
+}
 
     $("#add").click(function () {  
         var autor = $( "#in .autor" ).val();
@@ -12,7 +28,7 @@ var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
         
 
         $('#books_list').append(
-            `<li id=${counter}><input type="text" class="autor" value="${autor}"> <input type="text" class="titulo" value="${titulo}"> <input type="text" class="edicao" value="${edicao}"> <button class=remove>-</button></li>`
+            `<li id=${counter}><input type="text" class="titulo" value="${titulo}"> <input type="text" class="autor" value="${autor}"> <input type="text" class="edicao" value="${edicao}"> <button class=remove>-</button></li>`
         );
         counter = counter+1;
     });
@@ -37,18 +53,7 @@ var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
             lista.push(book);
         });
 
-        settings = [];
-        $("#settings li").each(function() {
-            var p = $(this).find(".ordem").attr("prop"); 
-            //if off push last ORDEM 1
-            if ($(this).find(".ordem").attr("prop") == 2){
-                var filtro = "";
-            } else{
-                var filtro = $(this).attr("prop");
-            };
-            settings.push({"propriedade": filtro, "ordem": Math.pow(-1,p)});
-        });
-        lista = ordenar(lista,settings);
+        lista = ordenar(lista,getSettings());
         
         $('#books_list').empty();
         counter = 0;
@@ -81,6 +86,10 @@ var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
         };
         $(this).attr("prop", i);
         $(this).html(mapa[i]);
+    });
+
+    $("#salvar").on("click", function() {
+        ipcRenderer.send('settings', getSettings()); // prints "pong"
     });
 
 });
