@@ -4,10 +4,26 @@ var counter=0;
 var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
 
 var lock = ipcRenderer.sendSync('is-locked', 'ping');
- if (lock == "true"){
+var settings = ipcRenderer.sendSync('settings', 'ping');
+console.log(settings)
+//Carrega as configs do arquivo
+$("#settings ul").empty();
+for (i = 0; i < 3; i++){
+    sett = settings[i];
+    a = sett["propriedade"].replace('off-','');
+    if (sett["propriedade"].includes("off-")){
+        p = 2;
+    }else {
+        p = (sett["ordem"] < 0)*1;//seta p = 0 para valores ASC e p = 1 para valores DES
+    };
+    $("#settings ul").append(`<li prop="${a}">${a.charAt(0).toUpperCase() + a.slice(1)}    <button class=ordem prop=${p}>${mapa[p]}</button>    <button id="up_${i}">up</button><button id="down_${i}">down</button></li>`); 
+};
+
+if (lock == "true"){
     $("#settings").hide();
     $("#salvar").hide();
- };
+};
+
 
 function getSettings(){
     settings = [];
@@ -15,7 +31,7 @@ function getSettings(){
         var p = $(this).find(".ordem").attr("prop"); 
         //if off push last ORDEM 1
         if ($(this).find(".ordem").attr("prop") == 2){
-            var filtro = "";
+            var filtro = `off-${$(this).attr("prop")}`;
         } else{
             var filtro = $(this).attr("prop");
         };
