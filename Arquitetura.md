@@ -5,19 +5,16 @@ Este documento tem o objetivo de justificar e explicar as escolhas tomadas neste
 Foi escolhido para a execucao do projeto o framework [Electron](https://electronjs.org/), que permite desenvolver um app desktop utilizando ferramentas web como JavaScript e HTML. Isto e] torna o codigo portatil, podendo ser executado em diversos sistemas operacionais ou ser facilmente portado para uma aplicacao web.
 
 ## Arquivos
+
 [Main.js](#Mainjs)
-
 [Main.html](#Mainhtml)
-
 [Window.js](#Windowjs)
-
 [Ordenador.js](#Ordenadorjs)
-
-[Settings.json](###Settingsjson)
+[Settings.json](#Settingsjson)
 
 
 ### Main.js
-Neste arquivo encontramos o inicio do co'digo. Em suas primeiras linhas temos a funcoes para criar a janela do programa e criar ou carregar, caso ja exista, o arquivo de configura'ao [settings.js](#Settings.js). 
+Neste arquivo encontramos o inicio do co'digo. Em suas primeiras linhas temos a funcoes para criar a janela do programa e criar ou carregar, caso ja exista, o arquivo de configura'ao [settings.js](#Settingsjs). 
 Em suas ultimas linhas temos tr'es func'oes de IPC (inter process communication) para transmitir dados entre a UI (janela principal) e o backend. Estas funcoes realizam tres operacoes: 
 
 1.  Comunicam com a interface se o arquivo de configuracao permite alteracao ou nao.
@@ -25,7 +22,7 @@ Em suas ultimas linhas temos tr'es func'oes de IPC (inter process communication)
 3.  Comunicam com a interface, quando o programa e iniciado, as preferencias setadas no arquivo de configuracao.
 
 ### Main.html
-Esta e a interface do programa com o cliente, nela e definido o esqueleto que sera dinamicamente modificado pelo arquivo [window.js](#Window.js)
+Esta e a interface do programa com o cliente, nela e definido o esqueleto que sera dinamicamente modificado pelo arquivo [window.js](#Windowjs)
 
 ### Window.js
 Este e o principal arquivo do programa, ele comanda toda a interface grafica, dando vida ao projeto.
@@ -34,7 +31,7 @@ A ordenacao dos livros ocorre atraves de um click no botao ORDENAR, isto desenca
 
 1.  Busca na interface do usuario(HTML) todos os livros inpudados pelo usuario e os coloca em uma lista.
 2.  Chama a funcao getSettings, que busca no HTML todas as configuracoes setadas pelo usuario.
-3.  Chama a funcao ordenar, definida em [ordenador.js](#Ordenador.js), para ordenar a lista de livros.
+3.  Chama a funcao ordenar, definida em [ordenador.js](#Ordenadorjs), para ordenar a lista de livros.
 4.  Atualiza a interface do usuario para mostrar a lista ordenada.
 
 Varias outras funcoes tambem estao contidas neste arquivo, elas sao necessarias para realizar funcoes como: adicionar novos livros, remover livros previamente adcionados e mudar a prioridade/direcao dos filtros.
