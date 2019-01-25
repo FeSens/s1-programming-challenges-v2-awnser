@@ -12,7 +12,7 @@ Foi escolhido para a execucao do projeto o framework [Electron](https://electron
 [Settings.json](#Settings.json)
 
 
-### Main.js
+(### Main.js)
 Neste arquivo encontramos o inicio do co'digo. Em suas primeiras linhas temos a funcoes para criar a janela do programa e criar ou carregar, caso ja exista, o arquivo de configura'ao [settings.js](#Settings.js). 
 Em suas ultimas linhas temos tr'es func'oes de IPC (inter process communication) para transmitir dados entre a UI (janela principal) e o backend. Estas funcoes realizam tres operacoes: 
 
