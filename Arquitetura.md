@@ -1,5 +1,10 @@
 # Arquitetura 
-Este documento tem o objetivo de justificar e explicar as escolhas tomadas neste projeto
+Este documento tem o objetivo de justificar e explicar as escolhas tomadas neste projeto.
+
+Varias duvidas surgiram quando a proposta do desafio foi lida: Fazer uma interface web? O que exatamente eu devo retornar para o usuario? Os livros ordenados ou os indices ordenados? Servico de ordenacao e Cliente do servico de ordenacao querem dizer back e frontend ou apenas o programa e o usuario do programa? As configuracoes de ordenacao devem ser somente acessiveis atraves de um arquivo?
+Para sanar estas duvidas foi escolhida uma direcao. Este programa nao e direcionado a equipe do processo seletivo da SumOne ou para quem estiver avaliando o codigo, este programa e direcionado ao usuario. Este projeto foi pensado em satifazer as necessidades de uma bliblioteca que precisa ordenar os seus livros.
+Dito isto, gostaria de explicar o parametro `{'lock': false}` disponivel no arquivo de configuracao settings.json. Esta configuracao serve para consistencia na ordenacao dos livros. Caso assim deseje, o responsavel pela organizacao da bliblioteca pode travar as configuracoes, grantindo que qualquer funcionario sem conhecimento ou treinamento previo possa organizar a bliblioteca de maneira coerente aos seus antecessores. Porem caso nao deseje, as configuracoes podem ser facilmente ajustadas na interface grafica.
+Foi com esta mentalidade que este programa foi desenvolvido.
 
 ## Framework
 Foi escolhido para a execucao do projeto o framework [Electron](https://electronjs.org/), que permite desenvolver um app desktop utilizando ferramentas web como JavaScript e HTML. Isto e] torna o codigo portatil, podendo ser executado em diversos sistemas operacionais ou ser facilmente portado para uma aplicacao web.
@@ -7,9 +12,13 @@ Foi escolhido para a execucao do projeto o framework [Electron](https://electron
 ## Arquivos
 
 [Main.js](#Mainjs)
+
 [Main.html](#Mainhtml)
+
 [Window.js](#Windowjs)
+
 [Ordenador.js](#Ordenadorjs)
+
 [Settings.json](#Settingsjson)
 
 
