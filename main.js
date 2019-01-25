@@ -26,7 +26,11 @@ const file = 'settings.json'
 if (fs.existsSync(file)) {
     var settings = JSON.parse(fs.readFileSync(file, 'utf8'));
 } else {
-    var settings = {"ordem":"progresso"};
+    var settings = [
+        {"propriedade":"titulo","ordem":1},
+        {"propriedade":"autor","ordem":1},
+        {"propriedade":"edicao","ordem":1},
+    ];
     fs.writeFile (file, JSON.stringify(settings), function(err) {
     if (err) throw err;
     console.log('complete');
