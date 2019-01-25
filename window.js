@@ -3,6 +3,12 @@ const { ipcRenderer } = require('electron')
 var counter=0;
 var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
 
+var lock = ipcRenderer.sendSync('is-locked', 'ping');
+ if (lock == "true"){
+    $("#settings").hide();
+    $("#salvar").hide();
+ };
+
 function getSettings(){
     settings = [];
     $("#settings li").each(function() {
