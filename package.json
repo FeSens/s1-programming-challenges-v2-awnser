@@ -1,0 +1,20 @@
+{
+  "name": "ordenador-de-blibliotecas",
+  "version": "1.0.0",
+  "description": "Um software criado afim de ordenar uma sequencia de livros",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeSens/s1-programming-challenges-v2-awnser.git"
+  },
+  "author": "Felipe Sens Bonetto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FeSens/s1-programming-challenges-v2-awnser/issues"
+  },
+  "homepage": "https://github.com/FeSens/s1-programming-challenges-v2-awnser#readme"
+}
