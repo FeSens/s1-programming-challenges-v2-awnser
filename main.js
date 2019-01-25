@@ -2,6 +2,8 @@ const electron = require("electron");
 const url = require("url")
 const path = require("path")
 var fs = require('fs');
+const { ipcMain } = require('electron')
+
 
 const {app, BrowserWindow} = electron;
 
@@ -19,7 +21,6 @@ function createWindow() {
     })
 }
 
-app.on('ready', createWindow)
 
 
 const file = 'settings.json'
@@ -37,6 +38,16 @@ if (fs.existsSync(file)) {
     });
 };
 
+console.log(settings);
+
+ipcMain.on('salvar', (event, arg) => {
+    console.log(arg)
+    fs.writeFile (file, JSON.stringify(arg), function(err) {
+        if (err) throw err;
+        console.log('Configs Salvas com sucesso!');
+        });
+    //event.sender.send('asynchronous-reply', 'pong')
+  })
 
 
-console.log(settings)
+app.on('ready', createWindow);
