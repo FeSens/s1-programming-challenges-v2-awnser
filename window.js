@@ -49,8 +49,6 @@ var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
             settings.push({"propriedade": filtro, "ordem": Math.pow(-1,p)});
         });
         lista = ordenar(lista,settings);
-        console.log(lista);
-
         
         $('#books_list').empty();
         counter = 0;
