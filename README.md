@@ -1,10 +1,10 @@
 # s1-programming-challenges-v2-awnser
 
 ## Descrição
-Este repositorio contem a solucao do desafio proposto em: https://github.com/sumoners/s1-programming-challenges/blob/3d69130bae0fffc7dc4c7271d02ba86bbd5c003a/v2/README.md
+Este repositório contem a solução do desafio proposto em: https://github.com/sumoners/s1-programming-challenges/blob/3d69130bae0fffc7dc4c7271d02ba86bbd5c003a/v2/README.md
 
-O codigo foi desenvolvido em JavaScript HTML utilizando o framework [Eletron](https://electronjs.org/)
-## Dependencias
+O código foi desenvolvido em Java Script HTML utilizando o framework [Eletron](https://electronjs.org/)
+## Dependências
 * Nodejs   (v11.4.0)
 * electron (v4.0.2)
 * jquery   (3.3.1)
