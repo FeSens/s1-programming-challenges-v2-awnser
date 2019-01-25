@@ -5,11 +5,15 @@ Este documento tem o objetivo de justificar e explicar as escolhas tomadas neste
 Foi escolhido para a execucao do projeto o framework [Electron](https://electronjs.org/), que permite desenvolver um app desktop utilizando ferramentas web como JavaScript e HTML. Isto e] torna o codigo portatil, podendo ser executado em diversos sistemas operacionais ou ser facilmente portado para uma aplicacao web.
 
 ## Arquivos
-[Main.js](###Main.js)
-[Main.html](#Main.html)
-[Window.js](#Window.js)
-[Ordenador.js](#Ordenador.js)
-[Settings.json](###Settings.json)
+[Main.js](#Mainjs)
+
+[Main.html](#Mainhtml)
+
+[Window.js](#Windowjs)
+
+[Ordenador.js](#Ordenadorjs)
+
+[Settings.json](###Settingsjson)
 
 
 ### Main.js
