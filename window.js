@@ -77,10 +77,11 @@ var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
     });
 
     //Cicla entre Ascendente descentende e Off
+    //bloquear os 3 em off
     $('.ordem').on('click', function() {
         var i = $(this).attr("prop");
         i++;
-        if(i > 2 ){ 
+        if(i > 2 - (($("[class=ordem][prop=2]").length < 2) ? 0 : 1) ){ //Rotaciona entre ASC,DES e OFF, permite apenas dois filtros em OFF
             i = 0
         };
         $(this).attr("prop", i);
