@@ -1,6 +1,6 @@
 $(() => {
 var counter=0;
-var firstBy = require('thenby');
+var mapa = { 0:"ASC", 1:"DES", 2:"OFF"};
 
     $("#add").click(function () {  
         var autor = $( "#in .autor" ).val();
@@ -74,6 +74,17 @@ var firstBy = require('thenby');
     $('[id^="down_"]').on('click', function() {
         var li = $(this).closest('li');
         li.next('li').after(li);
+    });
+
+    //Cicla entre Ascendente descentende e Off
+    $('.ordem').on('click', function() {
+        var i = $(this).attr("prop");
+        i++;
+        if(i > 2 ){ 
+            i = 0
+        };
+        $(this).attr("prop", i);
+        $(this).html(mapa[i]);
     });
 
 });
