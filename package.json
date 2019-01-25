@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/FeSens/s1-programming-challenges-v2-awnser/issues"
   },
-  "homepage": "https://github.com/FeSens/s1-programming-challenges-v2-awnser#readme"
+  "homepage": "https://github.com/FeSens/s1-programming-challenges-v2-awnser#readme",
+  "dependencies": {
+    "electron": "^4.0.2",
+    "jquery": "^3.3.1",
+    "thenby": "^1.3.0"
+  }
 }
